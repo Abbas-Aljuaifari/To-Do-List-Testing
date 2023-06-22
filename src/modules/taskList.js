@@ -1,17 +1,17 @@
-import Task from './task.js';
+import Task from "./task.js";
 
 class TaskList {
   constructor() {
-    const storedTasks = localStorage.getItem('tasks');
+    const storedTasks = localStorage.getItem("tasks");
     this.tasks = storedTasks ? JSON.parse(storedTasks) : [];
   }
 
   saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
   }
 
   addTask(description) {
-    if (description.trim() !== '') {
+    if (description.trim() !== "") {
       const newTask = new Task(description);
       this.tasks.push(newTask);
       this.updateIndexes();
@@ -46,12 +46,8 @@ class TaskList {
   }
 
   clearCompleted() {
-    for (let i = this.tasks.length - 1; i >= 0; i -= 1) {
-      if (this.tasks[i].completed) {
-        this.deleteTask(i);
-      }
-    }
+    this.tasks = this.tasks.filter((task) => !task.completed);
   }
 }
 
-export default TaskList;
+module.exports = TaskList;
