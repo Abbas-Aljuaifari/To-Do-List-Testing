@@ -1,0 +1,170 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #153677, #4e085f);
+  padding: 10px;
+}
+
+.to-do-app {
+  width: 100%;
+  max-width: 540px;
+  background: white;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 5px;
+}
+
+.to-do-app h2 {
+  color: #03276f;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  margin-left: 70%;
+  background-image: url(./asset/agenda.svg);
+  background-size: cover;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #d7d8db;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin-bottom: 30px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.row:hover {
+  background-color: #ffa035;
+}
+
+.my-text {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+}
+
+.add-btn {
+  border: none;
+  outline: none;
+  background-color: #df543e;
+  color: #fff;
+  font-size: 16px;
+  padding: 15px 50px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.add-btn:hover {
+  background-color: #ffd8ac;
+}
+
+.list-contaner li {
+  list-style: none;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #df543e;
+}
+
+.task-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.task-checkbox:checked {
+  background-color: #df543e;
+}
+
+.edit-input {
+  border-radius: 10px;
+  padding: 5px;
+  background: transparent;
+  border: 1px solid #df543e;
+}
+
+.task-checkbox:checked::after {
+  content: "\2713";
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Remove-btn {
+  border: none;
+  outline: none;
+  background-color: #df543e;
+  color: #fff;
+  font-size: 16px;
+  padding: 15px 50px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 0.4s ease-in-out;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.Remove-btn:hover {
+  background-color: #ffd8ac;
+}
+
+.task-delete-button {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  top: 1px;
+}
+
+.task-delete-button::after {
+  content: "\00D7";
+  color: #ccc;
+  font-size: 20px;
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.task-delete-button:hover {
+  background-color: #df543e;
+}
+
+.task-delete-button:hover::after {
+  color: white;
+}
