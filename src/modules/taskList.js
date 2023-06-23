@@ -47,6 +47,7 @@ class TaskList {
 
   clearCompleted() {
     this.tasks = this.tasks.filter((task) => !task.completed);
+    this.updateIndexes();
   }
 }
 
