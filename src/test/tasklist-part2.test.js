@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import TaskList from '../modules/taskList.js';
 import Task from '../modules/task.js';
 
