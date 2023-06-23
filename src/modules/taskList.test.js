@@ -55,7 +55,7 @@ describe('TaskList', () => {
       expect(taskList.tasks[0].description).toBe(description);
 
       expect(localStorage.getItem('tasks')).toEqual(
-        JSON.stringify(taskList.tasks),
+        JSON.stringify(taskList.tasks)
       );
     });
     test('should add multiple tasks to the task list', () => {
@@ -73,7 +73,7 @@ describe('TaskList', () => {
       });
 
       expect(localStorage.getItem('tasks')).toEqual(
-        JSON.stringify(taskList.tasks),
+        JSON.stringify(taskList.tasks)
       );
     });
   });
@@ -93,7 +93,7 @@ describe('TaskList', () => {
       expect(taskList.tasks).toEqual(expectedTasks);
 
       expect(localStorage.getItem('tasks')).toEqual(
-        JSON.stringify(taskList.tasks),
+        JSON.stringify(taskList.tasks)
       );
     });
   });
@@ -108,7 +108,7 @@ describe('TaskList', () => {
     expect(taskList.tasks.length).toBe(0);
 
     expect(localStorage.getItem('tasks')).toEqual(
-      JSON.stringify(taskList.tasks),
+      JSON.stringify(taskList.tasks)
     );
   });
   test('should not delete any task if the index is out of range', () => {
@@ -125,7 +125,18 @@ describe('TaskList', () => {
     expect(taskList.tasks).toEqual(expectedTasks);
 
     expect(localStorage.getItem('tasks')).toEqual(
-      JSON.stringify(taskList.tasks),
+      JSON.stringify(taskList.tasks)
     );
+  });
+  test('should delete multiple tasks from todo list', () => {
+    taskList.addTask('Task 1');
+    taskList.addTask('Task 2');
+    taskList.addTask('Task 3');
+
+    taskList.deleteTask(0);
+    taskList.deleteTask(0);
+    taskList.deleteTask(0);
+
+    expect(taskList.tasks.length).toEqual(0);
   });
 });
