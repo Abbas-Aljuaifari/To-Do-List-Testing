@@ -100,8 +100,20 @@ describe('TaskList', () => {
             completed: false,
             index: 1,
           }),
-        ]),
+        ])
       );
+    });
+    it('should update the index for remaining tasks on clearCompleted trigger', () => {
+      const taskList = new TaskList();
+      taskList.addTask('Task 1');
+      taskList.addTask('Task 2');
+      taskList.addTask('Task 3');
+      taskList.addTask('Task 4');
+      taskList.tasks[0].completed = true;
+      taskList.tasks[2].completed = true;
+      taskList.clearCompleted();
+      const indices = taskList.tasks.map((element) => element.index);
+      expect(indices).toEqual([1, 2]);
     });
   });
 });
