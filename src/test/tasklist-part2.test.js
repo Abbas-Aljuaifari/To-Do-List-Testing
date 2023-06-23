@@ -24,6 +24,20 @@ describe('TaskList', () => {
       taskList.deleteTask(1);
       expect(taskList.tasks.length).toBe(1);
     });
+
+    it('should update the indices when a task is deleted', () => {
+      const taskList = new TaskList();
+      taskList.addTask('Task 1');
+      taskList.addTask('Task 2');
+      taskList.addTask('Task 3');
+      taskList.addTask('Task 4');
+
+      taskList.deleteTask(0);
+      taskList.deleteTask(1);
+      const indices = taskList.tasks.map((task) => task.index);
+
+      expect(indices).toEqual([1, 2]);
+    });
   });
 
   describe('toggleComplete', () => {
@@ -38,7 +52,7 @@ describe('TaskList', () => {
     it('should not toggle the completion status if the index is out of range', () => {
       const taskList = new TaskList();
       taskList.addTask('Task 1');
-      const index = 1;
+      const index = 5;
       taskList.toggleComplete(index);
       expect(taskList.tasks[0].completed).toBe(false);
     });
