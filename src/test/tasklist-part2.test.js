@@ -6,6 +6,10 @@ import TaskList from '../modules/taskList.js';
 import Task from '../modules/task.js';
 
 describe('TaskList', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   describe('deleteTask', () => {
     it('should delete the only task in the task list', () => {
       const taskList = new TaskList();
