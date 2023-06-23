@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import TaskList from './taskList.js';
-import Task from './task.js';
+import TaskList from '../modules/taskList.js';
+import Task from '../modules/task.js';
 
 // Mock localStorage
 const localStorageMock = (() => {
