@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import TaskList from './taskList.js';
-import Task from './task.js';
+import TaskList from "../modules/taskList.js";
+import Task from "../modules/task.js";
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -23,7 +23,7 @@ const localStorageMock = (() => {
   };
 })();
 
-Object.defineProperty(window, 'localStorage', {
+Object.defineProperty(window, "localStorage", {
   value: localStorageMock,
 });
 
@@ -36,7 +36,7 @@ document.body.innerHTML = `
   <span class="icon"></span>
 `;
 
-describe('TaskList', () => {
+describe("TaskList", () => {
   let taskList;
 
   beforeEach(() => {
@@ -44,9 +44,9 @@ describe('TaskList', () => {
     taskList = new TaskList();
   });
 
-  describe('addTask', () => {
-    test('should add a new task to the task list', () => {
-      const description = 'New task description';
+  describe("addTask", () => {
+    test("should add a new task to the task list", () => {
+      const description = "New task description";
 
       taskList.addTask(description);
 
@@ -54,12 +54,12 @@ describe('TaskList', () => {
       expect(taskList.tasks[0]).toBeInstanceOf(Task);
       expect(taskList.tasks[0].description).toBe(description);
 
-      expect(localStorage.getItem('tasks')).toEqual(
-        JSON.stringify(taskList.tasks),
+      expect(localStorage.getItem("tasks")).toEqual(
+        JSON.stringify(taskList.tasks)
       );
     });
-    test('should add multiple tasks to the task list', () => {
-      const descriptions = ['Task 1', 'Task 2', 'Task 3'];
+    test("should add multiple tasks to the task list", () => {
+      const descriptions = ["Task 1", "Task 2", "Task 3"];
 
       descriptions.forEach((description) => {
         taskList.addTask(description);
@@ -72,17 +72,17 @@ describe('TaskList', () => {
         expect(taskList.tasks[index].description).toBe(description);
       });
 
-      expect(localStorage.getItem('tasks')).toEqual(
-        JSON.stringify(taskList.tasks),
+      expect(localStorage.getItem("tasks")).toEqual(
+        JSON.stringify(taskList.tasks)
       );
     });
   });
 
-  describe('deleteTask', () => {
-    test('should delete the task at the given index', () => {
-      taskList.addTask('Task 1');
-      taskList.addTask('Task 2');
-      taskList.addTask('Task 3');
+  describe("deleteTask", () => {
+    test("should delete the task at the given index", () => {
+      taskList.addTask("Task 1");
+      taskList.addTask("Task 2");
+      taskList.addTask("Task 3");
 
       const index = 1;
       const expectedTasks = [taskList.tasks[0], taskList.tasks[2]];
@@ -92,13 +92,13 @@ describe('TaskList', () => {
       expect(taskList.tasks.length).toBe(2);
       expect(taskList.tasks).toEqual(expectedTasks);
 
-      expect(localStorage.getItem('tasks')).toEqual(
-        JSON.stringify(taskList.tasks),
+      expect(localStorage.getItem("tasks")).toEqual(
+        JSON.stringify(taskList.tasks)
       );
     });
   });
-  test('should delete the only task in the task list', () => {
-    const description = 'Task 1';
+  test("should delete the only task in the task list", () => {
+    const description = "Task 1";
     taskList.addTask(description);
 
     const index = 0;
@@ -107,14 +107,14 @@ describe('TaskList', () => {
 
     expect(taskList.tasks.length).toBe(0);
 
-    expect(localStorage.getItem('tasks')).toEqual(
-      JSON.stringify(taskList.tasks),
+    expect(localStorage.getItem("tasks")).toEqual(
+      JSON.stringify(taskList.tasks)
     );
   });
-  test('should not delete any task if the index is out of range', () => {
-    taskList.addTask('Task 1');
-    taskList.addTask('Task 2');
-    taskList.addTask('Task 3');
+  test("should not delete any task if the index is out of range", () => {
+    taskList.addTask("Task 1");
+    taskList.addTask("Task 2");
+    taskList.addTask("Task 3");
 
     const index = 3;
     const expectedTasks = taskList.tasks.slice();
@@ -124,14 +124,14 @@ describe('TaskList', () => {
     expect(taskList.tasks.length).toBe(expectedTasks.length);
     expect(taskList.tasks).toEqual(expectedTasks);
 
-    expect(localStorage.getItem('tasks')).toEqual(
-      JSON.stringify(taskList.tasks),
+    expect(localStorage.getItem("tasks")).toEqual(
+      JSON.stringify(taskList.tasks)
     );
   });
-  test('should delete multiple tasks from todo list', () => {
-    taskList.addTask('Task 1');
-    taskList.addTask('Task 2');
-    taskList.addTask('Task 3');
+  test("should delete multiple tasks from todo list", () => {
+    taskList.addTask("Task 1");
+    taskList.addTask("Task 2");
+    taskList.addTask("Task 3");
 
     taskList.deleteTask(0);
     taskList.deleteTask(0);
