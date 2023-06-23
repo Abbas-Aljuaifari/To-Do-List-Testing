@@ -100,7 +100,7 @@ describe('TaskList', () => {
             completed: false,
             index: 1,
           }),
-        ])
+        ]),
       );
     });
     it('should update the index for remaining tasks on clearCompleted trigger', () => {
